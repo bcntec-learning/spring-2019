@@ -1,22 +1,20 @@
-package allianz.spring2018.beans01.beans;
+package allianz.spring2018.aop.proxy;
 
 
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.io.Serializable;
 
 
 @Component
-public class MyFirstBean implements BeanNameAware, BeanPostProcessor {
+public class MyFirstBean implements FirstBean, BeanNameAware, BeanPostProcessor {
     private String myName;
 
 
+    @Override
     public void hello() {
         System.err.println("hello " + myName + "!!!!!!");
     }

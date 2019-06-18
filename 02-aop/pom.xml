@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>01-beans</artifactId>
-    <name>01.Beans</name>
+    <artifactId>02-aop</artifactId>
+    <name>02.AOP</name>
 
     <parent>
         <groupId>bcntec.learning.spring2018</groupId>
