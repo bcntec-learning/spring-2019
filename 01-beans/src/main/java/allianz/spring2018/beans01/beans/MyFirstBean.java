@@ -1,4 +1,4 @@
-package allianz.spring2018.beans01;
+package allianz.spring2018.beans01.beans;
 
 
 import org.springframework.beans.BeansException;
@@ -13,18 +13,18 @@ import java.io.Serializable;
 
 
 @Component
-public class MyFirstBean implements BeanNameAware , BeanPostProcessor {
+public class MyFirstBean implements BeanNameAware, BeanPostProcessor {
     private String myName;
 
 
-    public void hello(){
+    public void hello() {
         System.err.println("hello " + myName + "!!!!!!");
     }
 
 
     @Override
     public void setBeanName(String name) {
-        this.myName=name;
+        this.myName = name;
     }
 
     /* see MyFirstAOPBean
@@ -37,18 +37,14 @@ public class MyFirstBean implements BeanNameAware , BeanPostProcessor {
     }
      */
 
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        return bean;
-    }
 
     @PostConstruct
-    public void p0(){
-        System.err.println("constructed "+myName);
+    public void p0() {
+        System.err.println("constructed " + myName);
     }
 
     @PreDestroy
-    public void p1(){
-        System.err.println("destroying "+myName);
+    public void p1() {
+        System.err.println("destroying " + myName);
     }
 }

@@ -1,5 +1,6 @@
-package allianz.spring2018.beans01;
+package allianz.spring2018.beans01.case2;
 
+import allianz.spring2018.beans01.beans.MyFirstBean;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MyFirstMain {
@@ -13,6 +14,7 @@ public class MyFirstMain {
         ctx.refresh();
         MyFirstBean c = ctx.getBean(MyFirstBean.class);
         c.hello();
+        ctx.registerShutdownHook();
 
     }
 }
