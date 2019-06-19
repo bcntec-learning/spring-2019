@@ -1,8 +1,8 @@
 package allianz.spring.aop.test;
 
 
-import allianz.spring.aop.proxy.FirstBean;
-import allianz.spring.aop.proxy.MyFirstBean;
+import allianz.spring.aop.a_proxy.FirstBean;
+import allianz.spring.aop.a_proxy.MyFirstBean;
 import org.junit.Before;
 import org.junit.Test;
 

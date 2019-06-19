@@ -1,4 +1,4 @@
-package allianz.spring.aop.proxy;
+package allianz.spring.aop.a_proxy;
 
 
 public class MyFirstBean implements FirstBean {
