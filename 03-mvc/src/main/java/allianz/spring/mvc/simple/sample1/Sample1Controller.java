@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -16,6 +17,8 @@ public class Sample1Controller {
     public String showForm() {
 
         return "redirect:/html/index.html";
+
+        //return new ModelAndView("redirect:/html/index.html");
     }
 
     @ResponseStatus(HttpStatus.CREATED)
