@@ -3,8 +3,6 @@ package allianz.spring.aop.test;
 
 import allianz.spring.aop.a_proxy.FirstBean;
 import allianz.spring.aop.a_proxy.MyFirstBean;
-import lombok.Getter;
-import lombok.Setter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,13 +20,14 @@ public class TestProxy {
 
 
     @Before
-    public void init(){
+    public void init() {
 
-        InvocationHandler handler = new  InvocationHandler() {
-            int i=0;
+        InvocationHandler handler = new InvocationHandler() {
+            int i = 0;
+
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                if(i>3){
+                if (i > 3) {
                     throw new RuntimeException("no no no");
                 }
                 i++;
@@ -38,7 +37,7 @@ public class TestProxy {
 
 
         myFirstBean = (FirstBean) Proxy.newProxyInstance(
-                FirstBean.class.getClassLoader(), new Class[] { FirstBean.class }, handler);
+                FirstBean.class.getClassLoader(), new Class[]{FirstBean.class}, handler);
 
 
     }
@@ -51,7 +50,7 @@ public class TestProxy {
         target.hello("target_asset_not_null");
         target.hello("target_asset_not_null");
         target.hello("target_asset_not_null");
-        System.err.println(target); //== System.err.println(target.toString());
+        //System.err.println(target); //== System.err.println(target.toString());
 
     }
 
@@ -63,8 +62,10 @@ public class TestProxy {
         myFirstBean.hello("proxy_asset_not_null");
         myFirstBean.hello("proxy_asset_not_null");
         myFirstBean.hello("proxy_asset_not_null");
+        myFirstBean.hello("proxy_asset_not_null");
+        myFirstBean.hello("proxy_asset_not_null");
+        myFirstBean.hello("proxy_asset_not_null");
         fail();
-        System.err.println(myFirstBean);
 
     }
 
@@ -76,7 +77,6 @@ public class TestProxy {
         myFirstBean.hello("proxy_asset_not_null");
         myFirstBean.hello("proxy_asset_not_null");
 
-        System.err.println(myFirstBean);
 
     }
 
