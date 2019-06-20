@@ -55,6 +55,7 @@ public class Sample1Controller {
 
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
+    //@PostMapping("/add3")
     @RequestMapping(value = "/add3", method = RequestMethod.POST)
     public String submit(User user) {
 
