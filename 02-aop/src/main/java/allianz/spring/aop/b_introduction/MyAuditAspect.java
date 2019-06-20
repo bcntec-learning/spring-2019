@@ -6,7 +6,6 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Aspect
 public class MyAuditAspect {

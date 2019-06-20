@@ -14,6 +14,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -32,8 +34,13 @@ public class TestAutowired {
     @Resource(name="myFirstBean")
     FirstBean byName;
 
-    @Autowired
+    @Inject
     MyFirstBySetter bySetter;
+
+    @Inject
+    @Named("myFirstBean")
+    FirstBean byName2;
+
     @Autowired
     MyFirstByConstructor byConstructor;
 
