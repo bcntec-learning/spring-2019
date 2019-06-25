@@ -18,7 +18,7 @@ public class Sample3Controller {
         //base dat0s?
         ModelAndView m = new ModelAndView();
         m.setViewName("add");
-        m.getModelMap().addAttribute("customer", new Customer("name",1L,"email@domain"));
+        m.getModelMap().addAttribute("customer", new Customer("name", 1L, "email@domain"));
         return m;
     }
 

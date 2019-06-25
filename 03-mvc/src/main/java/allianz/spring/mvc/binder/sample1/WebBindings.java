@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import java.beans.PropertyEditorSupport;
 
 /**
+ *
  */
 @Component
 public class WebBindings {

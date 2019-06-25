@@ -6,7 +6,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.baeldung.web.util.SearchCriteria;
 
 public class UserSearchQueryCriteriaConsumer implements Consumer<SearchCriteria>{
 
