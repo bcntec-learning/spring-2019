@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Book {
+public class BookEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,15 +26,15 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "library_id")
-    private Library library;
+    private LibraryEntity library;
 
     @ManyToMany(mappedBy = "books", fetch = FetchType.EAGER)
-    private List<Author> authors;
+    private List<AuthorEntity> authors;
 
-    public Book() {
+    public BookEntity() {
     }
 
-    public Book(String title) {
+    public BookEntity(String title) {
         super();
         this.title = title;
     }
@@ -63,19 +63,19 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public Library getLibrary() {
+    public LibraryEntity getLibrary() {
         return library;
     }
 
-    public void setLibrary(Library library) {
+    public void setLibrary(LibraryEntity library) {
         this.library = library;
     }
 
-    public List<Author> getAuthors() {
+    public List<AuthorEntity> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<Author> authors) {
+    public void setAuthors(List<AuthorEntity> authors) {
         this.authors = authors;
     }
 

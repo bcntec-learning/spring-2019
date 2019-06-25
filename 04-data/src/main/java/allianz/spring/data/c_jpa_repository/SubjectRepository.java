@@ -1,15 +1,15 @@
 package allianz.spring.data.c_jpa_repository;
 
-import allianz.spring.data.entities.Subject;
+import allianz.spring.data.entities.SubjectEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-public interface SubjectRepository extends PagingAndSortingRepository<Subject, Long> {
+public interface SubjectRepository extends PagingAndSortingRepository<SubjectEntity, Long> {
 
     @RestResource(path = "nameContains")
-    public Page<Subject> findByNameContaining(@Param("name") String name, Pageable p);
+    public Page<SubjectEntity> findByNameContaining(@Param("name") String name, Pageable p);
 
 }

@@ -1,0 +1,34 @@
+package allianz.spring.data.a_jpa_dao;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.ComponentScan;
+
+import javax.persistence.EntityManager;
+
+
+/*@RunWith(SpringRunner.class)
+@Sql(scripts = "/projection-insert-data.sql")
+@Sql(scripts = "/projection-clean-up-data.sql", executionPhase = AFTER_TEST_METHOD)
+*/
+@ComponentScan(value = {"allianz.spring.data.entities", "allianz.spring.data.a_jpa_dao"},
+        basePackageClasses = UserDAO.class)
+
+@SpringBootApplication(scanBasePackageClasses = {SpringDAOMain.class},
+        exclude = {SecurityAutoConfiguration.class})
+public class SpringDAOMain {
+    @Autowired
+    EntityManager entityManager;
+    @Autowired
+    UserDAO userDAO;
+
+
+    public static void main(String[] args) {
+        new SpringApplicationBuilder()
+                .sources(SpringDAOMain.class).run(args);
+    }
+
+}

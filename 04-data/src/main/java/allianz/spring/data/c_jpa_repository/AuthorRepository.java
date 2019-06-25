@@ -1,9 +1,9 @@
 package allianz.spring.data.c_jpa_repository;
 
-import allianz.spring.data.entities.Author;
+import allianz.spring.data.entities.AuthorEntity;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface AuthorRepository extends CrudRepository<Author, Long> {
+public interface AuthorRepository extends CrudRepository<AuthorEntity, Long> {
 
 }

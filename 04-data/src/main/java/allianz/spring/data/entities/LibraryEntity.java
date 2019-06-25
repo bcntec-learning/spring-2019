@@ -13,12 +13,12 @@ import javax.persistence.OneToOne;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
-@Entity
-public class Library {
+@Entity(name="Library")
+public class LibraryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column
     private String name;
@@ -26,15 +26,15 @@ public class Library {
     @OneToOne
     @JoinColumn(name = "address_id")
     @RestResource(path = "libraryAddress")
-    private Address address;
+    private AddressEntity address;
 
     @OneToMany(mappedBy = "library")
-    private List<Book> books;
+    private List<BookEntity> books;
 
-    public Library() {
+    public LibraryEntity() {
     }
 
-    public Library(String name) {
+    public LibraryEntity(String name) {
         super();
         this.name = name;
     }
@@ -55,19 +55,19 @@ public class Library {
         this.id = id;
     }
 
-    public Address getAddress() {
+    public AddressEntity getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressEntity address) {
         this.address = address;
     }
 
-    public List<Book> getBooks() {
+    public List<BookEntity> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(List<BookEntity> books) {
         this.books = books;
     }
 

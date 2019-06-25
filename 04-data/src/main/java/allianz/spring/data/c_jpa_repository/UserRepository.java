@@ -1,6 +1,6 @@
 package allianz.spring.data.c_jpa_repository;
 
-import allianz.spring.data.entities.User;
+import allianz.spring.data.entities.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
 @RepositoryRestResource(collectionResourceRel = "users", path = "users")
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<UserEntity, Long> {
 
     @Override
     @RestResource(exported = false)
-    void delete(User entity);
+    void delete(UserEntity entity);
 
     @Override
     @RestResource(exported = false)
@@ -21,12 +21,12 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     @Override
     @RestResource(exported = false)
-    void deleteAll(Iterable<? extends User> entities);
+    void deleteAll(Iterable<? extends UserEntity> entities);
 
     @Override
     @RestResource(exported = false)
     void deleteById(Long aLong);
 
     @RestResource(path = "byEmail", rel = "customFindMethod")
-    User findByEmail(@Param("email") String email);
+    UserEntity findByEmail(@Param("email") String email);
 }

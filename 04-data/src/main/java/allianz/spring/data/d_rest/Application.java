@@ -2,7 +2,7 @@ package allianz.spring.data.d_rest;
 
 import java.util.stream.Stream;
 
-import allianz.spring.data.entities.User;
+import allianz.spring.data.entities.UserEntity;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +19,7 @@ public class Application {
     CommandLineRunner initialize(UserRepository userRepository) {
         return args -> {
             Stream.of("Juanito", "Roberta", "Ignasio", "Mario", "Honorio").forEach(name -> {
-                User user = new User(name);
+                UserEntity user = new UserEntity(name);
                 userRepository.save(user);
             });
             userRepository.findAll().forEach(System.out::println);

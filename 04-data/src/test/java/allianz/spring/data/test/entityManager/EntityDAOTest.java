@@ -1,0 +1,41 @@
+package allianz.spring.data.test.entityManager;
+
+import allianz.spring.data.a_jpa_dao.UserDAO;
+import allianz.spring.data.entities.UserEntity;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.util.HashMap;
+import java.util.Map;
+
+@Slf4j
+public class EntityDAOTest {
+
+
+    @Test
+    public void dao() {
+        Map<String, String> map = new HashMap<>();
+        map.put("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
+        map.put("hibernate.hbm2ddl.auto", "create");
+        map.put("hibernate.show", "true");
+        map.put("javax.persistence.jdbc.url","jdbc:hsqldb:mem:jpa21:persistence-unit");
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpa21:persistence-unit",map);
+        EntityManager entityManager = factory.createEntityManager();
+
+        UserDAO userDAO = new UserDAO(entityManager);
+
+        for (UserEntity user : userDAO.listOrderByName()) {
+            log.info(user.getName());
+        }
+
+        UserEntity  juan = userDAO.findById(1L);
+
+        System.out.println(juan);
+
+    }
+
+}

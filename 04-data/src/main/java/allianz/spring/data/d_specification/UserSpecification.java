@@ -1,6 +1,6 @@
 package allianz.spring.data.d_specification;
 
-import allianz.spring.data.entities.User;
+import allianz.spring.data.entities.UserEntity;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -8,7 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-public class UserSpecification implements Specification<User> {
+public class UserSpecification implements Specification<UserEntity> {
 
     private SpecSearchCriteria criteria;
 
@@ -22,7 +22,7 @@ public class UserSpecification implements Specification<User> {
     }
 
     @Override
-    public Predicate toPredicate(final Root<User> root, final CriteriaQuery<?> query, final CriteriaBuilder builder) {
+    public Predicate toPredicate(final Root<UserEntity> root, final CriteriaQuery<?> query, final CriteriaBuilder builder) {
         switch (criteria.getOperation()) {
             case EQUALITY:
                 return builder.equal(root.get(criteria.getKey()), criteria.getValue());
