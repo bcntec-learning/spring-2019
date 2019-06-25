@@ -16,10 +16,11 @@ public class Internal1MvcConfigurer implements WebMvcConfigurer {
     public void configureViewResolvers(ViewResolverRegistry registry) {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setViewClass(JstlView.class);
-        resolver.setPrefix("/jsp/");
+        //resolver.setViewClass(RawView.class);
+        resolver.setPrefix("/jsp2/");
         resolver.setSuffix(".jsp");
         resolver.setOrder(1);
-        //other way -> registry.jsp("/jsp/", ".jsp").
+        //other way -> registry.jsp("/jsp2/", ".jsp").
         registry.viewResolver(resolver); //
     }
 

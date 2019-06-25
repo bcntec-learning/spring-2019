@@ -6,9 +6,9 @@
     <bean id="echo" class="org.springframework.web.servlet.view.JstlView">
         <property name="url" value="/jsp/echo.jsp"/>
     </bean>
-    <bean id="echo2" class="course.spring.mvc.model.MyPDF">
+    <bean id="echo2" class="allianz.spring.mvc.viewresolvers.MyPDF">
     </bean>
-    <bean id="echo3" class="course.spring.mvc.model.resource.Echo3">
+    <bean id="echo3" class="allianz.spring.mvc.viewresolvers.resource.Echo3">
     </bean>
 
 </beans>

@@ -9,7 +9,8 @@ public abstract class AbstractController {
 
 
     @GetMapping("/echo")
-    public String echo(@RequestParam(name = "text", required = false, defaultValue = "Echoooo") String text, Model model) {
+    public String echo(@RequestParam(name = "text", required = false, defaultValue = "Echoooo") String text,
+                       Model model) {
         model.addAttribute("echoText", text);
         return "echo";
     }
@@ -21,7 +22,7 @@ public abstract class AbstractController {
     }
 
     @GetMapping("/echo3")
-    public ModelAndView echo2(@RequestParam(name = "text", required = false, defaultValue = "Echoooo") String text) {
+    public ModelAndView echo3(@RequestParam(name = "text", required = false, defaultValue = "Echoooo") String text) {
         ModelAndView model = new ModelAndView();
         model.addObject("echoText", text);
         model.setViewName("echo3");
