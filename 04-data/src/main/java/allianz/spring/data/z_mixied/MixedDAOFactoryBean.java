@@ -41,7 +41,7 @@ public class MixedDAOFactoryBean<R extends MixedDAO<T, ID>, T, ID extends Serial
 
         @Override
         protected JpaRepositoryImplementation<T, ID> getTargetRepository(RepositoryInformation metadata, EntityManager entityManager) {
-            AISGenericDAOImpl<T, ID> repository = new AISGenericDAOImpl<>((Class<T>) metadata.getDomainType(), getEntityManager());
+            MixedDAOImpl<T, ID> repository = new MixedDAOImpl<>((Class<T>) metadata.getDomainType(), getEntityManager());
             //repository.setRepositoryMethodMetadata(crudMethodMetadataPostProcessor.getCrudMethodMetadata());
             return repository;
         }
@@ -56,7 +56,7 @@ public class MixedDAOFactoryBean<R extends MixedDAO<T, ID>, T, ID extends Serial
             if (isQueryDslExecutor(metadata.getRepositoryInterface())) {
                 return QuerydslJpaRepository.class;
             } else {
-                return AISGenericDAOImpl.class;
+                return MixedDAOImpl.class;
             }
         }
     }
