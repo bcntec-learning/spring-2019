@@ -3,13 +3,9 @@ package allianz.spring.configuration.centralized;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.context.annotation.Profile;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 
 //@Profile("configuration-client")
 @SpringBootApplication(scanBasePackageClasses = ConfigurationClientApplication.class)
@@ -20,7 +16,8 @@ public class ConfigurationClientApplication {
         application.setAdditionalProfiles("configuration-client");
         application.run(args);
     }
-     @RefreshScope
+
+    @RefreshScope
     @RestController
     public static class MessageRestController {
 

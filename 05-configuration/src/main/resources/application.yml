@@ -2,6 +2,11 @@
 
 ---
 spring:
+  profiles: dev
+  application:
+    name: dev-client
+---
+spring:
   profiles: configuration-client
   application:
     name: configuration-client

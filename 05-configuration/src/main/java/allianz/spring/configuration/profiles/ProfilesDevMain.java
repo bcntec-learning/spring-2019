@@ -11,7 +11,6 @@ public class ProfilesDevMain {
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(ConfigurationServiceApplication.class);
         application.setAdditionalProfiles("dev");
-        application.setWebApplicationType(WebApplicationType.NONE);
         application.run(args);
     }
 }
