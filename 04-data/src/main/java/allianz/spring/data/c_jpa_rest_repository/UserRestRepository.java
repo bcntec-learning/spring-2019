@@ -1,4 +1,4 @@
-package allianz.spring.data.c_jpa_repository;
+package allianz.spring.data.c_jpa_rest_repository;
 
 import allianz.spring.data.entities.UserEntity;
 import org.springframework.data.repository.CrudRepository;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
 @RepositoryRestResource(collectionResourceRel = "users", path = "users")
-public interface UserRepository extends CrudRepository<UserEntity, Long> {
+public interface UserRestRepository extends CrudRepository<UserEntity, Long> {
 
     @Override
     @RestResource(exported = false)

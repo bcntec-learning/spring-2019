@@ -24,11 +24,26 @@ public class AbstractDAO<E, ID> {
         }
     }
 
+    public E persist(E e){
+        getEntityManager().persist(e);
+        //entityManager.flush();
+        //entityManager.merge(e);
+        return e;
+    }
+
     public List<E> listAll() {
         return getEntityManager().createQuery(
                 "from " + getEntityClazz().getSimpleName().replace("Entity", ""),
                 getEntityClazz()).getResultList();
 
 
+    }
+
+    public E deleteById(ID id) {
+        E d  = findById(id);
+        if(d!=null){
+           getEntityManager().remove(d);
+        }
+        return d;
     }
 }

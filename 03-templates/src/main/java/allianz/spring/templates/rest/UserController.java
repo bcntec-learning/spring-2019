@@ -1,7 +1,5 @@
-package allianz.spring.data.c_jpa_repository;
+package allianz.spring.templates.rest;
 
-import allianz.spring.data.a_jpa_dao.UserDAO;
-import allianz.spring.data.entities.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -12,14 +10,37 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.List;
 
 @Controller
-public class UserRepositoryController {
+public class UserController {
+
     @Autowired
-    UserRepository repository;
+    UserService userService;
+
 
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @GetMapping(value = "/list")
-    public Iterable<UserEntity> list(){
-        return repository.findAll();
+    public List<User> list() {
+
+
+        List<User> users = userService.list();
+
+
+        return users;
     }
+
+
+
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    @GetMapping(value = "/list-feign")
+    public List<User> listFeign() {
+
+
+        List<User> users = userService.listFeign();
+
+
+        return users;
+    }
+
+
 }

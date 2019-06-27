@@ -1,4 +1,4 @@
-package allianz.spring.data.c_jpa_repository;
+package allianz.spring.data.c_jpa_rest_repository;
 
 import org.springframework.data.repository.CrudRepository;
 

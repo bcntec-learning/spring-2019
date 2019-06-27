@@ -1,14 +1,12 @@
-package allianz.spring.data.a_jpa_dao;
+package allianz.spring.data.c_jpa_rest_repository;
 
 
-import allianz.spring.data.entities.UserEntity;
+import allianz.spring.data.a_jpa_dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.EntityManager;
 
@@ -19,19 +17,19 @@ import javax.persistence.EntityManager;
 */
 @ComponentScan(value = {"allianz.spring.data.entities", "allianz.spring.data.a_jpa_dao"},
         basePackageClasses = UserDAO.class)
-@EntityScan(basePackageClasses = UserEntity.class)
-@SpringBootApplication(scanBasePackageClasses = {SpringDAOMain.class},
+
+@SpringBootApplication(scanBasePackageClasses = {SpringRepositoryMain.class},
         exclude = {SecurityAutoConfiguration.class})
-public class SpringDAOMain {
+public class SpringRepositoryMain {
     @Autowired
     EntityManager entityManager;
     @Autowired
-    UserDAO userDAO;
+    UserRestRepository userRepository;
 
 
     public static void main(String[] args) {
         new SpringApplicationBuilder()
-                .sources(SpringDAOMain.class).run(args);
+                .sources(SpringRepositoryMain.class).run(args);
     }
 
 }

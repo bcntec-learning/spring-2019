@@ -16,12 +16,10 @@ import java.util.Objects;
 @Getter
 @Setter
 public class PricePKEmbedded implements Serializable {
-    @Id
     @ManyToOne
     private BookEntity book;
 
 
-    @Id
     @ManyToOne
     private LibraryEntity library;
 
