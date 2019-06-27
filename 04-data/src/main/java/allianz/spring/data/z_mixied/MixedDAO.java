@@ -1,6 +1,5 @@
 package allianz.spring.data.z_mixied;
 
-import ais.framework.data.jpa.AISJPARepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
 import javax.persistence.EntityManager;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @NoRepositoryBean
 public interface MixedDAO<T, ID extends Serializable>
-        extends AISJPARepository<T, ID> {
+        extends MixedJPARepository<T, ID> {
 
     EntityManager getEntityManager();
 
