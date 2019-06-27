@@ -9,20 +9,18 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 
-@Profile("configuration-client")
-@SpringBootApplication(scanBasePackageClasses = ConfigurationClientApplication.class,
-        exclude = {ConfigurationClientApplication.class,
-                SecurityAutoConfiguration.class,
-                DataSourceAutoConfiguration.class})
+//@Profile("configuration-client")
+@SpringBootApplication(scanBasePackageClasses = ConfigurationClientApplication.class)
 public class ConfigurationClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConfigurationClientApplication.class, args);
+        SpringApplication application = new SpringApplication(ConfigurationServiceApplication.class);
+        application.setAdditionalProfiles("configuration-client");
+        application.run(args);
     }
-
-    //@RefreshScope
+     @RefreshScope
     @RestController
     public static class MessageRestController {
 
