@@ -10,13 +10,13 @@ import java.io.Serializable;
 import java.util.Optional;
 
 @NoRepositoryBean
-public class <DAOImpl<T, ID extends Serializable>
+public class MixedDAOImpl<T, ID extends Serializable>
         extends SimpleJpaRepository<T, ID> implements MixedDAO<T, ID> {
 
     @Getter
     private final EntityManager entityManager;
 
-    public AISGenericDAOImpl(Class<T> domainClass, EntityManager entityManager) {
+    public MixedDAOImpl(Class<T> domainClass, EntityManager entityManager) {
         super(domainClass, entityManager);
         this.entityManager = entityManager;
     }
