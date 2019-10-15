@@ -6,7 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MySecondBean {
     //@Autowired que es igual a @Inject
-    private  MyFirstBean myFirstBean;
+    private  FirstBean myFirstBean;
+
 
 
     @Autowired
@@ -20,5 +21,6 @@ public class MySecondBean {
     //@Autowired
     public void setMyFirstBean(MyFirstBean myFirstBean) {
         this.myFirstBean = myFirstBean;
+
     }
 }
