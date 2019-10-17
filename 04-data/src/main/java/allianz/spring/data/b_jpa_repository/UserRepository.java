@@ -27,7 +27,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     Page<UserEntity> findAllByNameLikeOrderByNameAsc(String name, Pageable page);
 
 
-    @Query(value = "from User where name=:name order by name",
+    @Query(value = "from User where name like :name order by name",
             countQuery = "select count(u) from User u where u.name like :name ")  //?1
     Page<UserEntity> listMyOrder(@Param("name") String name, Pageable page);
 
