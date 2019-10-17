@@ -1,13 +1,12 @@
 package allianz.spring.data.a_jpa_dao;
 
 import allianz.spring.data.entities.UserEntity;
-import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+
 @Component
 public class UserDAO extends AbstractDAO<UserEntity, Long> {
 

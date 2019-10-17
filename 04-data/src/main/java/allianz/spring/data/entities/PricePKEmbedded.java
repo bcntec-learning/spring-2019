@@ -1,7 +1,5 @@
 package allianz.spring.data.entities;
 
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,8 +11,6 @@ import java.util.Objects;
  * @author francisco.philip@gmail.com
  */
 
-@Getter
-@Setter
 public class PricePKEmbedded implements Serializable {
     @ManyToOne
     private BookEntity book;
@@ -31,6 +27,22 @@ public class PricePKEmbedded implements Serializable {
         PricePKEmbedded pricePK = (PricePKEmbedded) o;
         return Objects.equals(book, pricePK.book) &&
                 Objects.equals(library, pricePK.library);
+    }
+
+    public BookEntity getBook() {
+        return book;
+    }
+
+    public void setBook(BookEntity book) {
+        this.book = book;
+    }
+
+    public LibraryEntity getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(LibraryEntity library) {
+        this.library = library;
     }
 
     @Override

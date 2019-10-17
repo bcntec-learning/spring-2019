@@ -1,8 +1,5 @@
 package allianz.spring.data.d_specification;
 
-import lombok.Data;
-
-@Data
 public class SpecSearchCriteria {
 
     private String key;
@@ -46,4 +43,35 @@ public class SpecSearchCriteria {
         this.value = value;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public SearchOperation getOperation() {
+        return operation;
+    }
+
+    public void setOperation(SearchOperation operation) {
+        this.operation = operation;
+    }
+
+    public Object getValue() {
+        return value;
+    }
+
+    public void setValue(Object value) {
+        this.value = value;
+    }
+
+    public boolean isOrPredicate() {
+        return orPredicate;
+    }
+
+    public void setOrPredicate(boolean orPredicate) {
+        this.orPredicate = orPredicate;
+    }
 }

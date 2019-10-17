@@ -1,6 +1,5 @@
 package allianz.spring.data.z_mixied;
 
-import lombok.Getter;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
@@ -30,7 +29,6 @@ public class MixedDAOFactoryBean<R extends MixedDAO<T, ID>, T, ID extends Serial
     private static class GenericDAOFactory<T, ID extends Serializable>
             extends JpaRepositoryFactory {
 
-        @Getter
         private final EntityManager entityManager;
 
         public GenericDAOFactory(EntityManager entityManager) {
@@ -58,6 +56,10 @@ public class MixedDAOFactoryBean<R extends MixedDAO<T, ID>, T, ID extends Serial
             } else {
                 return MixedDAOImpl.class;
             }
+        }
+
+        public EntityManager getEntityManager() {
+            return entityManager;
         }
     }
 }

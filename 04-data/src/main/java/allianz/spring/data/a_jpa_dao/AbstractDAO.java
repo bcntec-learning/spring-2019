@@ -1,20 +1,19 @@
 package allianz.spring.data.a_jpa_dao;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.List;
 
-@RequiredArgsConstructor
 public class AbstractDAO<E, ID> {
-    @Getter(AccessLevel.PROTECTED)
     private final Class<E> entityClazz;
-    @Getter(AccessLevel.PROTECTED)
     private final EntityManager entityManager;
 
+
+    public AbstractDAO(Class<E> entityClazz, EntityManager entityManager) {
+        this.entityClazz = entityClazz;
+        this.entityManager = entityManager;
+    }
 
     public E findById(ID id) {
         try {
@@ -45,5 +44,13 @@ public class AbstractDAO<E, ID> {
            getEntityManager().remove(d);
         }
         return d;
+    }
+
+    public Class<E> getEntityClazz() {
+        return entityClazz;
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 }

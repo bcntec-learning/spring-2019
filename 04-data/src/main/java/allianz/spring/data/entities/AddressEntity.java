@@ -1,13 +1,10 @@
 package allianz.spring.data.entities;
 
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 
 @Table(name = "ADDRESSES")
 @Entity(name = "Address")
-@Getter @Setter
 public class AddressEntity {
 
     @Id
@@ -20,5 +17,27 @@ public class AddressEntity {
     @OneToOne(mappedBy = "address")
     private LibraryEntity library;
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public LibraryEntity getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(LibraryEntity library) {
+        this.library = library;
+    }
 }

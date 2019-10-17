@@ -1,7 +1,5 @@
 package allianz.spring.data.entities;
 
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -13,8 +11,6 @@ import java.math.BigDecimal;
  * @author francisco.philip@gmail.com
  */
 
-@Getter
-@Setter
 @Entity
 @Table(name = "PRICES")
 public class Price2Entity {
@@ -24,4 +20,19 @@ public class Price2Entity {
     @Column
     private BigDecimal value;
 
+    public PricePKEmbedded getPk() {
+        return pk;
+    }
+
+    public void setPk(PricePKEmbedded pk) {
+        this.pk = pk;
+    }
+
+    public BigDecimal getValue() {
+        return value;
+    }
+
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
 }

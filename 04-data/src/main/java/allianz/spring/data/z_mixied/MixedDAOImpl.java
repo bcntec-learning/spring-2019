@@ -1,6 +1,6 @@
 package allianz.spring.data.z_mixied;
 
-import lombok.Getter;
+import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +13,6 @@ import java.util.Optional;
 public class MixedDAOImpl<T, ID extends Serializable>
         extends SimpleJpaRepository<T, ID> implements MixedDAO<T, ID> {
 
-    @Getter
     private final EntityManager entityManager;
 
     public MixedDAOImpl(Class<T> domainClass, EntityManager entityManager) {
@@ -31,6 +30,16 @@ public class MixedDAOImpl<T, ID extends Serializable>
             returned = Optional.of(deleted);
         }
         return returned;
+    }
+
+    public MixedDAOImpl(JpaEntityInformation<T, ?> entityInformation, EntityManager entityManager, EntityManager entityManager1) {
+        super(entityInformation, entityManager);
+        this.entityManager = entityManager1;
+    }
+
+    @Override
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
     @Override
