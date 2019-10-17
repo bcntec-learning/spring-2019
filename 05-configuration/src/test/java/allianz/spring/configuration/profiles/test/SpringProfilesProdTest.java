@@ -12,10 +12,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static junit.framework.TestCase.assertTrue;
 
-@ActiveProfiles("dev")
+@ActiveProfiles("production")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {DevDatasourceConfig.class, ProductionDatasourceConfig.class})
-public class SpringProfilesTest {
+public class SpringProfilesProdTest {
     @Autowired
     DatasourceConfig datasourceConfig;
 
@@ -31,6 +31,8 @@ public class SpringProfilesTest {
 
     @Test
     public void setupDatasource() {
-        assertTrue(datasourceConfig.setup().contains("DEV"));
+
+
+        assertTrue(datasourceConfig.setup().contains("PRODUCTION"));
     }
 }
