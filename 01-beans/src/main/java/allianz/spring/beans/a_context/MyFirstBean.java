@@ -26,15 +26,6 @@ public class MyFirstBean implements FirstBean, BeanNameAware, BeanPostProcessor 
         this.myName = name;
     }
 
-    /* see MyFirstAOPBean
-    @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if(bean instanceof Serializable){
-        return bean;
-        }
-        throw new BeanCreationException("no eres serializable");
-    }
-     */
 
 
     @PostConstruct

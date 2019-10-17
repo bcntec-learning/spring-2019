@@ -1,10 +1,7 @@
 package allianz.spring.aop.test;
 
 
-import allianz.spring.aop.b_introduction.MyBusiness1;
-import allianz.spring.aop.b_introduction.MyBusiness2;
-import allianz.spring.aop.b_introduction.MyBusinessContext;
-import allianz.spring.aop.b_introduction.MyException;
+import allianz.spring.aop.b_introduction.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +22,9 @@ public class TestContextMyBusiness {
 
     @Autowired
     MyBusiness2 myBusiness2;
+
+    @Autowired
+    MyBusiness myBusiness22;
 
     @Autowired
     private List<String> accumulator;

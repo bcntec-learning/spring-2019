@@ -19,7 +19,7 @@ public class MyFirstMain1 {
         ctx.refresh();
         MyFirstBean c = ctx.getBean(MyFirstBean.class);
         System.err.println(c.hello());
-        MyFirstBean cSub = ctx.getBean(MyFirstBean.class);
+        FirstBean cSub = ctx.getBean("subMyFirstBean",FirstBean.class);
         System.err.println(cSub.hello());
 
         Map<String, FirstBean> cIMap = ctx.getBeansOfType(FirstBean.class);

@@ -2,12 +2,12 @@ package allianz.spring.beans.test;
 
 
 import allianz.spring.beans.a_context.MyFirstBean;
-import allianz.spring.beans.a_context.MySecondBean;
 import allianz.spring.beans.a_context.MyFirstContext1;
+import allianz.spring.beans.a_context.MySecondBean;
+import allianz.spring.beans.c_custom_qualifier.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -15,29 +15,19 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {MyFirstContext1.class})
-public class TestContext {
+@ContextConfiguration(classes = {InjectAndAutoWiredContext.class})
+public class TestCustomQualifier {
 
+    //@CustomQualifier(status = StatusType.A)
     @Autowired
-    MyFirstBean myFirstBean;
+    Custom custom;
 
-    @Autowired
-    MySecondBean b;
 
 
     @Test
-    public void first_not_null(){
-        assertNotNull(myFirstBean);
-        String s = myFirstBean.hello();
-        assertEquals("hello myFirstBean!!!!!!", s);
+    public void custom(){
+        assertNotNull(custom);
 
     }
 
-
-    @Test
-    public void second_not_null(){
-        assertNotNull(b);
-        b.hello();
-
-    }
 }

@@ -1,18 +1,15 @@
 package allianz.spring.beans.factories;
 
 import allianz.spring.beans.FirstBean;
+import org.springframework.stereotype.Component;
 
-public class MyThirdBean implements FirstBean {
-    private final String name;
+public class MyLastBean implements FirstBean {
+    private  String name;
 
-    public MyThirdBean(FirstBean bean) {
-        name=bean.hello();
-    }
 
-    public MyThirdBean(String name) {
+    public void setName(String name) {
         this.name = name;
     }
-
 
     @Override
     public String hello() {
