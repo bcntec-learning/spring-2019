@@ -3,6 +3,8 @@ package allianz.spring.data.test.entityManager;
 import allianz.spring.data.entities.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,9 +12,8 @@ import javax.persistence.Persistence;
 import java.util.HashMap;
 import java.util.Map;
 
-@Slf4j
 public class EntityManagerTest {
-
+    private static final  Logger log = LoggerFactory.getLogger(EntityManagerTest.class);
 
     @Test
     public void standalone() {
