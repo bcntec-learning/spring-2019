@@ -6,10 +6,10 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+@SuppressWarnings("unused")
 @Component
 public class MySecondBean implements BeanFactoryAware {
-    //@Autowired que es igual a @Inject
+    //@Autowired //que es igual a @Inject
     private  MyFirstBean myFirstBean;
 
     private BeanFactory beanFactory;

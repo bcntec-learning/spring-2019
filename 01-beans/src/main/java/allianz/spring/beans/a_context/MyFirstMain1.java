@@ -15,8 +15,12 @@ public class MyFirstMain1 {
         //ApplicationContext context = new ClassPathXmlApplicationContext("path/to/applicationContext.xml");
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+        //ctx.scan("...");
         ctx.register(MyFirstContext1.class);
         ctx.refresh();
+
+
+
         MyFirstBean c = ctx.getBean(MyFirstBean.class);
         System.err.println(c.hello());
         FirstBean cSub = ctx.getBean("subMyFirstBean",FirstBean.class);
