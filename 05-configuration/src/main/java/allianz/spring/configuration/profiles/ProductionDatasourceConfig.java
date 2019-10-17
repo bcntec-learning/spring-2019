@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("production")
+@Profile("production, !dev")
 public class ProductionDatasourceConfig implements DatasourceConfig {
     @Override
     public void setup() {
