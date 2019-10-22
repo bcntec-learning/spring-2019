@@ -23,7 +23,7 @@ public class AbstractDAO<E, ID> {
         }
     }
 
-    public E persist(E e){
+    public E persist(E e) {
         getEntityManager().persist(e);
         //entityManager.flush();
         //entityManager.merge(e);
@@ -39,9 +39,9 @@ public class AbstractDAO<E, ID> {
     }
 
     public E deleteById(ID id) {
-        E d  = findById(id);
-        if(d!=null){
-           getEntityManager().remove(d);
+        E d = findById(id);
+        if (d != null) {
+            getEntityManager().remove(d);
         }
         return d;
     }

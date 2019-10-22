@@ -1,31 +1,17 @@
 package allianz.spring.data.d_specification;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import com.google.common.base.Joiner;
+
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.google.common.base.Joiner;
 
 public class CriteriaParser {
 
     private static Map<String, Operator> ops;
 
     private static Pattern SpecCriteraRegex = Pattern.compile("^(\\w+?)(" + Joiner.on("|")
-        .join(SearchOperation.SIMPLE_OPERATION_SET) + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?)$");
-
-    private enum Operator {
-        OR(1), AND(2);
-        final int precedence;
-
-        Operator(int p) {
-            precedence = p;
-        }
-    }
+            .join(SearchOperation.SIMPLE_OPERATION_SET) + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?)$");
 
     static {
         Map<String, Operator> tempMap = new HashMap<>();
@@ -50,13 +36,13 @@ public class CriteriaParser {
             if (ops.containsKey(token)) {
                 while (!stack.isEmpty() && isHigerPrecedenceOperator(token, stack.peek()))
                     output.push(stack.pop()
-                        .equalsIgnoreCase(SearchOperation.OR_OPERATOR) ? SearchOperation.OR_OPERATOR : SearchOperation.AND_OPERATOR);
+                            .equalsIgnoreCase(SearchOperation.OR_OPERATOR) ? SearchOperation.OR_OPERATOR : SearchOperation.AND_OPERATOR);
                 stack.push(token.equalsIgnoreCase(SearchOperation.OR_OPERATOR) ? SearchOperation.OR_OPERATOR : SearchOperation.AND_OPERATOR);
             } else if (token.equals(SearchOperation.LEFT_PARANTHESIS)) {
                 stack.push(SearchOperation.LEFT_PARANTHESIS);
             } else if (token.equals(SearchOperation.RIGHT_PARANTHESIS)) {
                 while (!stack.peek()
-                    .equals(SearchOperation.LEFT_PARANTHESIS))
+                        .equals(SearchOperation.LEFT_PARANTHESIS))
                     output.push(stack.pop());
                 stack.pop();
             } else {
@@ -72,6 +58,15 @@ public class CriteriaParser {
             output.push(stack.pop());
 
         return output;
+    }
+
+    private enum Operator {
+        OR(1), AND(2);
+        final int precedence;
+
+        Operator(int p) {
+            precedence = p;
+        }
     }
 
 }

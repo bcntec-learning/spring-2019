@@ -5,5 +5,5 @@ import org.springframework.stereotype.Component;
 
 @Profile("bean2")
 @Component
-public class MyFourthBean2 implements FourthBean{
+public class MyFourthBean2 implements FourthBean {
 }

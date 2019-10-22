@@ -2,11 +2,9 @@ package allianz.spring.data.a_jpa_dao;
 
 import allianz.spring.data.entities.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +21,9 @@ public class UserDAOController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @GetMapping(value = "/list")
-    public List<UserEntity> list(){
+    public List<UserEntity> list() {
 
-        List<UserEntity> users =  userDAO.listOrderByName();
+        List<UserEntity> users = userDAO.listOrderByName();
 
         return users;
     }
@@ -35,18 +33,19 @@ public class UserDAOController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/")
     public UserEntity insert(@RequestParam("name") String name,
-                             @RequestParam("email") String email){
+                             @RequestParam("email") String email) {
         UserEntity e = userDAO.persist(new UserEntity(name, email));
         e.setTrace(UUID.randomUUID().toString());
         return e;
     }
+
     @ResponseBody
     @Transactional
     @ResponseStatus(HttpStatus.OK)
     @PutMapping(value = "/{id}")
     public UserEntity update(@PathVariable("id") Long id,
                              @RequestParam("name") String name,
-                             @RequestParam("email") String email){
+                             @RequestParam("email") String email) {
         UserEntity e = userDAO.findById(id);
         e.setName(name);
         e.setEmail(email);
@@ -59,12 +58,12 @@ public class UserDAOController {
     @Transactional
     @ResponseBody
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity delete(@PathVariable("id") Long id){
+    public ResponseEntity delete(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.status(
                     userDAO.deleteById(id) != null ? HttpStatus.OK : HttpStatus.NOT_FOUND
             ).build();
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
 

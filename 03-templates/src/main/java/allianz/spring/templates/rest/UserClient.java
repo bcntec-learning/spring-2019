@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(name="users", url = MyTemplate.apiUrl)
+@FeignClient(name = "users", url = MyTemplate.apiUrl)
 public interface UserClient {
 
 

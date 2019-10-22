@@ -10,28 +10,28 @@ import org.springframework.context.annotation.Configuration;
 public class MyFactoryContext {
     @Qualifier("1")
     @Bean  //@Producer
-    public MyThirdBean myThirdBean1(MyFirstBean sub){
+    public MyThirdBean myThirdBean1(MyFirstBean sub) {
         //if()
         return new MyThirdBean(sub.getMyName());
     }
 
     @Qualifier("2")
     @Bean  //@Producer
-    public MyThirdBean myThirdBean2(MyFirstBean sub){
+    public MyThirdBean myThirdBean2(MyFirstBean sub) {
         //if()
-        return new MyThirdBean(sub.getMyName()+"!!!");
+        return new MyThirdBean(sub.getMyName() + "!!!");
     }
 
     @Qualifier("3")
     @Bean  //@Producer
-    public MyThirdBean myThirdBean3(MyFourBean sub){
+    public MyThirdBean myThirdBean3(MyFourBean sub) {
         //if()
         return new MyThirdBean(sub.hello());
     }
 
     @Qualifier("4")
     @Bean  //@Producer
-    public MyThirdBean myThirdBean3(@Qualifier("3") MyThirdBean sub){
+    public MyThirdBean myThirdBean3(@Qualifier("3") MyThirdBean sub) {
         //if()
         return sub;
     }

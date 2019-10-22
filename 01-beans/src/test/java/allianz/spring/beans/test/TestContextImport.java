@@ -25,7 +25,7 @@ public class TestContextImport {
 
 
     @Test
-    public void first_not_null(){
+    public void first_not_null() {
         assertNotNull(myFirstBean);
         myFirstBean.hello();
 
@@ -33,7 +33,7 @@ public class TestContextImport {
 
 
     @Test
-    public void second_not_null(){
+    public void second_not_null() {
         assertNotNull(b);
         b.hello();
 

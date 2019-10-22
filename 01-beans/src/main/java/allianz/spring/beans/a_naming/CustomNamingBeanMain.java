@@ -5,7 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class CustomNamingBeanMain {
 
-    public static void main(String... args){
+    public static void main(String... args) {
 
         //ApplicationContext context = new ClassPathXmlApplicationContext("path/to/applicationContext.xml");
 

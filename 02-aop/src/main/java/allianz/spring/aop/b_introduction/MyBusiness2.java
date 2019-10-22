@@ -12,7 +12,7 @@ public class MyBusiness2 implements MyBusiness {
         }
     }
 
-    public void throwMyException(){
+    public void throwMyException() {
         throw new MyException();
     }
 }

@@ -31,7 +31,7 @@ public class TestAutowired {
     @Autowired
     FirstBean byQualifier;
 
-    @Resource(name="myFirstBean")
+    @Resource(name = "myFirstBean")
     FirstBean byName;
 
     @Inject
@@ -72,7 +72,7 @@ public class TestAutowired {
     public void bySetter_not_null() {
         assertNotNull(bySetter);
         System.err.println(bySetter.hello());
-        assertEquals("hello sub2 MyFirstBean2_2!!!!!!->hello sub2 MyFirstBean2!!!!!!",bySetter.hello());
+        assertEquals("hello sub2 MyFirstBean2_2!!!!!!->hello sub2 MyFirstBean2!!!!!!", bySetter.hello());
 
     }
 

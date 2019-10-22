@@ -1,7 +1,5 @@
 package allianz.spring.mvc.errorhandling.sample4;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -72,16 +70,33 @@ public abstract class BaseExceptionHandler {
         exceptionMappings.put(clazz, new ExceptionMapping(code, message, status));
     }
 
-    @Data
     public static class ErrorResponse {
         private final String code;
         private final String message;
+
+        public ErrorResponse(String code, String message) {
+            this.code = code;
+            this.message = message;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public String getMessage() {
+            return message;
+        }
     }
 
-    @AllArgsConstructor
     private static class ExceptionMapping {
         private final String message;
         private final String code;
         private final HttpStatus status;
+
+        public ExceptionMapping(String message, String code, HttpStatus status) {
+            this.message = message;
+            this.code = code;
+            this.status = status;
+        }
     }
 }

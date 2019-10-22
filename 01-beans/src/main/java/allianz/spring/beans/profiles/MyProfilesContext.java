@@ -1,6 +1,7 @@
 package allianz.spring.beans.profiles;
 
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 //@Profile("!bean2")
 @Configuration

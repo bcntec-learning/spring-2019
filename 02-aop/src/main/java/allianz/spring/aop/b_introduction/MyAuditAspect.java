@@ -14,21 +14,19 @@ public class MyAuditAspect {
     private List<String> accumulator;
 
 
-
     @Pointcut("execution(public * allianz.spring.aop.b_introduction.MyBusiness+.run*(..))")
     public void runMethods() {
     }
 
     @Before("runMethods()")
-    public void before(JoinPoint joinPoint){
-        accumulator.add("Method  ["+joinPoint.getSignature().getName()+"] starts");
+    public void before(JoinPoint joinPoint) {
+        accumulator.add("Method  [" + joinPoint.getSignature().getName() + "] starts");
     }
 
     @After("runMethods()")
-    public void beforeSysOut(JoinPoint joinPoint){
-        System.out.println("Method  ["+joinPoint.getSignature().getName()+"] starts");
+    public void beforeSysOut(JoinPoint joinPoint) {
+        System.out.println("Method  [" + joinPoint.getSignature().getName() + "] starts");
     }
-
 
 
     @Around("@annotation(MyAudit)")

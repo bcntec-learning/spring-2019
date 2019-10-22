@@ -27,7 +27,6 @@ public class MyFirstBean implements FirstBean, BeanNameAware, BeanPostProcessor 
     }
 
 
-
     @PostConstruct
     public void p0() {
         System.err.println("constructed " + myName);

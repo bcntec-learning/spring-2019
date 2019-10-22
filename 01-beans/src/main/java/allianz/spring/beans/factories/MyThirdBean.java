@@ -6,7 +6,7 @@ public class MyThirdBean implements FirstBean {
     private final String name;
 
     public MyThirdBean(FirstBean bean) {
-        name=bean.hello();
+        name = bean.hello();
     }
 
     public MyThirdBean(String name) {

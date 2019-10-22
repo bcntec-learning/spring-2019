@@ -1,17 +1,16 @@
 package allianz.spring.configuration.centralized.test;
 
-import static org.assertj.core.api.Assertions.*;
-
 import allianz.spring.configuration.centralized.ConfigurationClientApplication;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.util.TestPropertyValues;
-//import org.springframework.cloud.context.refresh.ContextRefresher;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+//import org.springframework.cloud.context.refresh.ContextRefresher;
+
 @Ignore
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
@@ -23,16 +22,16 @@ public class ConfigurationClientApplicationTest {
     @Autowired
     private ConfigurationClientApplication.MessageRestController controller;
 
-  ////private ContextRefresher refresher;
+    ////private ContextRefresher refresher;
 
     @Test
     public void contextLoads() {
         assertThat(controller.getMessage()).isNotEqualTo("Hello test");
         TestPropertyValues
-            .of("message:Hello test")
-            .applyTo(environment);
+                .of("message:Hello test")
+                .applyTo(environment);
         assertThat(controller.getMessage()).isNotEqualTo("Hello test");
-      //  refresher.refresh();
+        //  refresher.refresh();
         assertThat(controller.getMessage()).isEqualTo("Hello test");
     }
 

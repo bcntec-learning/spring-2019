@@ -1,11 +1,11 @@
 package allianz.spring.aop.b_introduction;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Configuration

@@ -1,8 +1,8 @@
 package allianz.spring.beans.test;
 
 
-import allianz.spring.beans.factories.MyThirdBean;
 import allianz.spring.beans.factories.MyFactoryContext;
+import allianz.spring.beans.factories.MyThirdBean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +23,10 @@ public class TestFactories {
     MyThirdBean bean3;
 
 
-
     @Test
-    public void factory_not_null(){
+    public void factory_not_null() {
         assertNotNull(bean3);
-        assertEquals("hello hello !!!!!!!!!!!!",bean3.hello());
+        assertEquals("hello hello !!!!!!!!!!!!", bean3.hello());
     }
 
 }

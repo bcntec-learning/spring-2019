@@ -20,6 +20,11 @@ public class MixedDAOImpl<T, ID extends Serializable>
         this.entityManager = entityManager;
     }
 
+    public MixedDAOImpl(JpaEntityInformation<T, ?> entityInformation, EntityManager entityManager, EntityManager entityManager1) {
+        super(entityInformation, entityManager);
+        this.entityManager = entityManager1;
+    }
+
     @Transactional
     public Optional<T> findAndDeleteById(ID id) {
         T deleted = entityManager.find(this.getDomainClass(), id);
@@ -30,11 +35,6 @@ public class MixedDAOImpl<T, ID extends Serializable>
             returned = Optional.of(deleted);
         }
         return returned;
-    }
-
-    public MixedDAOImpl(JpaEntityInformation<T, ?> entityInformation, EntityManager entityManager, EntityManager entityManager1) {
-        super(entityInformation, entityManager);
-        this.entityManager = entityManager1;
     }
 
     @Override

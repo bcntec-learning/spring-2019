@@ -11,7 +11,7 @@ public class MyFirstBean implements FirstBean {
 
     @Override
     public String hello() {
-        return  "hello  !!!!!!";
+        return "hello  !!!!!!";
     }
 
 

@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 public class ProductionDatasourceConfig implements DatasourceConfig {
     @Override
     public String setup() {
-       return "Setting up datasource for PRODUCTION environment. ";
+        return "Setting up datasource for PRODUCTION environment. ";
     }
 }

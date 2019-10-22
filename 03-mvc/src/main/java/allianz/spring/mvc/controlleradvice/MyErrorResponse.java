@@ -1,10 +1,18 @@
 package allianz.spring.mvc.controlleradvice;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-@Data
-@AllArgsConstructor
 public class MyErrorResponse {
     String message;
+
+    public MyErrorResponse(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

@@ -1,9 +1,8 @@
 package allianz.spring.templates.rest;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.*;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.lang.Nullable;
@@ -22,18 +21,49 @@ import static org.springframework.http.HttpStatus.Series.CLIENT_ERROR;
 import static org.springframework.http.HttpStatus.Series.SERVER_ERROR;
 
 
-@Slf4j
 @Component
 public class MyTemplate {
-    @Getter
-    private final RestTemplate restTemplate = new RestTemplate();
-
 
     public static final String apiUrl = "http://localhost:8080/";
+    public static final String apiToken = "MyToken";
+    private static final Logger log = LoggerFactory.getLogger(MyTemplate.class);
 
-    public static final  String apiToken = "MyToken";
+    private final RestTemplate restTemplate = new RestTemplate();
 
+    @Nullable
+    static Charset getCharset(ClientHttpResponse response) {
+        HttpHeaders headers = response.getHeaders();
+        MediaType contentType = headers.getContentType();
+        return (contentType != null ? contentType.getCharset() : null);
+    }
 
+    public static ResponseErrorHandler errorHandler() {
+        return new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse httpResponse)
+                    throws IOException {
+                HttpStatus status = httpResponse.getStatusCode();
+                return (
+                        status.series() == CLIENT_ERROR
+                                || status.series() == SERVER_ERROR);
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse httpResponse) throws IOException {
+                try {
+                    String errorText = StreamUtils.copyToString(httpResponse.getBody(), (getCharset(httpResponse) == null ? Charset.forName("UTF-8") : getCharset(httpResponse)));
+                    log.error(httpResponse.getStatusCode() + "/" + errorText);
+                    switch (httpResponse.getStatusCode()) {
+                        case NOT_FOUND:
+                            throw new MyNotFoundException();
+                    }
+
+                } catch (IOException e) {
+                    log.error("code error:" + httpResponse.getStatusCode());
+                }
+            }
+        };
+    }
 
     @PostConstruct
     public void init() {
@@ -54,7 +84,6 @@ public class MyTemplate {
     public <T, B> ResponseEntity<T> post(String endpoint, B body, Class<T> t) {
         return exchange(endpoint, HttpMethod.POST, body, t, false);
     }
-
 
     public <T, B> ResponseEntity<T> post(String endpoint, B body, Class<T> t, boolean isToken) {
         return exchange(endpoint, HttpMethod.POST, body, t, isToken);
@@ -81,38 +110,6 @@ public class MyTemplate {
         return headers;
     }
 
-    @Nullable
-    static Charset getCharset(ClientHttpResponse response) {
-        HttpHeaders headers = response.getHeaders();
-        MediaType contentType = headers.getContentType();
-        return (contentType != null ? contentType.getCharset() : null);
-    }
-    public static ResponseErrorHandler errorHandler() {
-        return new ResponseErrorHandler() {
-            @Override
-            public boolean hasError(ClientHttpResponse httpResponse)
-                    throws IOException {
-                HttpStatus status = httpResponse.getStatusCode();
-                return (
-                        status.series() == CLIENT_ERROR
-                                || status.series() == SERVER_ERROR);
-            }
 
-            @Override
-            public void handleError(ClientHttpResponse httpResponse) throws IOException {
-                try {
-                    String errorText = StreamUtils.copyToString(httpResponse.getBody(), (getCharset(httpResponse) == null ? Charset.forName("UTF-8") : getCharset(httpResponse)));
-                    log.error(httpResponse.getStatusCode() + "/" + errorText);
-                    switch (httpResponse.getStatusCode()){
-                        case NOT_FOUND:
-                            throw new MyNotFoundException();
-                    }
-
-                } catch (IOException e) {
-                    log.error("code error:" + httpResponse.getStatusCode());
-                }
-            }
-        };
-    }
 
 }

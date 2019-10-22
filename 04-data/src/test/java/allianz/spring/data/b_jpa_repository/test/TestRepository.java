@@ -26,11 +26,12 @@ public class TestRepository {
     UserRepository repository;
 
     @Test
-    public void assert_not_null(){
+    public void assert_not_null() {
         assertNotNull(repository);
     }
+
     @Test
-    public void assert_first(){
+    public void assert_first() {
         Optional<UserEntity> f = repository.findById(1L);
         UserEntity u = f.get();
         assertEquals(u.getName(), "Juan");

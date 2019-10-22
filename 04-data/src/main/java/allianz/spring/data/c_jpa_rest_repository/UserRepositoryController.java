@@ -16,7 +16,7 @@ public class UserRepositoryController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @GetMapping(value = "/list")
-    public Iterable<UserEntity> list(){
+    public Iterable<UserEntity> list() {
         return repository.findAll();
     }
 }

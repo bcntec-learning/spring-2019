@@ -1,23 +1,22 @@
 package allianz.spring.data.d_specification;
 
-import java.util.function.Consumer;
-
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.function.Consumer;
 
 
-public class UserSearchQueryCriteriaConsumer implements Consumer<SearchCriteria>{
+public class UserSearchQueryCriteriaConsumer implements Consumer<SearchCriteria> {
 
     private Predicate predicate;
     private CriteriaBuilder builder;
     private Root r;
-    
+
     public UserSearchQueryCriteriaConsumer(Predicate predicate, CriteriaBuilder builder, Root r) {
         super();
         this.predicate = predicate;
         this.builder = builder;
-        this.r= r;
+        this.r = r;
     }
 
     @Override

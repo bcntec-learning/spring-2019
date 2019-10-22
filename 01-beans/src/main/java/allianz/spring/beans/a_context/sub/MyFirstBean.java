@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+
 @Scope("prototype")
 @Component("subMyFirstBean")
 public class MyFirstBean implements FirstBean, BeanNameAware, BeanFactoryAware {

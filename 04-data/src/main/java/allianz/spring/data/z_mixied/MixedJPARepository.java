@@ -14,6 +14,4 @@ public interface MixedJPARepository<T, ID extends Serializable> extends JpaRepos
         JpaSpecificationExecutor<T> {
 
 
-
-
 }

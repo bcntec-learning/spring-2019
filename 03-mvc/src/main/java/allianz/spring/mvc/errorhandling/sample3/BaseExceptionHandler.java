@@ -1,6 +1,5 @@
 package allianz.spring.mvc.errorhandling.sample3;
 
-import lombok.Data;
 import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,9 +21,22 @@ public abstract class BaseExceptionHandler {
         return new ErrorResponse("INTERNAL_SERVER_ERROR", "An unexpected internal server error occured");
     }
 
-    @Data
+
     public static class ErrorResponse {
         private final String code;
         private final String message;
+
+        public ErrorResponse(String code, String message) {
+            this.code = code;
+            this.message = message;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public String getMessage() {
+            return message;
+        }
     }
 }

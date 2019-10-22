@@ -29,7 +29,6 @@ public class UserController {
     }
 
 
-
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @GetMapping(value = "/list-feign")

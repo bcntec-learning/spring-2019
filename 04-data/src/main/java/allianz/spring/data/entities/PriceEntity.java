@@ -18,7 +18,7 @@ public class PriceEntity {
 
     @Id
     @ManyToOne
-    private LibraryEntity  library;
+    private LibraryEntity library;
 
     @Column
     private BigDecimal value;

@@ -18,20 +18,21 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     List<UserEntity> findAllByOrderByNameAsc();
 
-    @Query(value = "from User order by name" )
+    @Query(value = "from User order by name")
     List<UserEntity> listMyOrder();
 
-    @Query( "select u.name from User u group by u.name order by u.name" )
+    @Query("select u.name from User u group by u.name order by u.name")
     List<String> listNames();
 
     Page<UserEntity> findAllByNameLikeOrderByNameAsc(String name, Pageable page);
 
 
     @Query(value = "from User where name like :name order by name",
-            countQuery = "select count(u) from User u where u.name like :name ")  //?1
+            countQuery = "select count(u) from User u where u.name like :name ")
+        //?1
     Page<UserEntity> listMyOrder(@Param("name") String name, Pageable page);
 
-    default List<String> names(EntityManager e){
+    default List<String> names(EntityManager e) {
 
         return new ArrayList<>();
     }

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
+<html layout:decorate="~{base}"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{base}">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hello World!</title>
 </head>
@@ -10,7 +10,7 @@
 <section layout:fragment="content">
 
     <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-    <form th:action="@{/logout}" method="post">
+    <form method="post" th:action="@{/logout}">
         <input type="submit" value="Sign Out"/>
     </form>
 </section>

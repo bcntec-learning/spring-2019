@@ -30,7 +30,7 @@ public class TestContextMyBusiness {
     private List<String> accumulator;
 
     @Before
-    public void reset(){
+    public void reset() {
         accumulator.clear();
     }
 

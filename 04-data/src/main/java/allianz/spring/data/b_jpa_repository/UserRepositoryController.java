@@ -27,11 +27,11 @@ public class UserRepositoryController {
 
         List<UserEntity> users = userRepository.findAllByOrderByNameAsc();
         users.forEach(u -> {
-                    u.setEmail(u.getEmail().toUpperCase());
-                    u.setName(null);
-                    u.setVersion(null);
+            u.setEmail(u.getEmail().toUpperCase());
+            u.setName(null);
+            u.setVersion(null);
 
-                });
+        });
 
         return users;
     }

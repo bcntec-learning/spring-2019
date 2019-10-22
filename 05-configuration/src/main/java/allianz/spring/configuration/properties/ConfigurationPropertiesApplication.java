@@ -10,7 +10,7 @@ public class ConfigurationPropertiesApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         //SpringApplication application = new SpringApplication(ConfigurationServiceApplication.class);
-        SpringApplication.run(ConfigurationServiceApplication.class ,args);
+        SpringApplication.run(ConfigurationServiceApplication.class, args);
 
 
     }
