@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static junit.framework.TestCase.assertEquals;
 
-@ActiveProfiles("dev-client")
+@ActiveProfiles("dev")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SpringNameComponent.class)
 @SpringBootTest
@@ -23,8 +23,8 @@ public class PropertiesValuesDevProfileTest {
     @Value("${spring.application.name:default-name}")
     private String name;
 
-    @Test
+    @Test //application-dev.properties
     public void validate_app_name() {
-        assertEquals("dev-client", component.getName());
+        assertEquals("<properties file>", component.getName());
     }
 }

@@ -64,7 +64,7 @@ public class TestAutowired {
     public void byQualifier_not_null() {
         assertNotNull(byQualifier);
         System.err.println(byQualifier.hello());
-        assertEquals("hello sub2 MyFirstBean2!!!!!!", byQualifier.hello());
+        assertEquals("hello sub2 MyFirstBean2_2!!!!!!", byQualifier.hello());
 
     }
 
@@ -72,7 +72,7 @@ public class TestAutowired {
     public void bySetter_not_null() {
         assertNotNull(bySetter);
         System.err.println(bySetter.hello());
-        assertEquals("hello sub2 MyFirstBean2!!!!!!->hello sub2 MyFirstBean2!!!!!!",bySetter.hello());
+        assertEquals("hello sub2 MyFirstBean2_2!!!!!!->hello sub2 MyFirstBean2!!!!!!",bySetter.hello());
 
     }
 

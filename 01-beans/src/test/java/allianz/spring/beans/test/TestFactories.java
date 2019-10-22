@@ -27,7 +27,7 @@ public class TestFactories {
     @Test
     public void factory_not_null(){
         assertNotNull(bean3);
-        assertEquals("hello myFirstBean!!!!!!",bean3.hello());
+        assertEquals("hello hello !!!!!!!!!!!!",bean3.hello());
     }
 
 }
