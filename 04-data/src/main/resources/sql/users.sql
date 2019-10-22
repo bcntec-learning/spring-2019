@@ -1,1 +1,1 @@
-INSERT INTO PUBLIC.USERS(id,name, email) VALUES (1, 'Juan', 'juan@allianz.world')
+INSERT INTO PUBLIC.USERS(id,name, email) VALUES (-1, 'Juan', 'juan@allianz.world')

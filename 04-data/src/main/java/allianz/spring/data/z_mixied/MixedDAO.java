@@ -21,6 +21,7 @@ public interface MixedDAO<T, ID extends Serializable>
     }
 
 
+
     @SuppressWarnings("unchecked")
     default List<T> list() {
         return getEntityManager().createQuery("from " + getDomainClass().getName()).getResultList();

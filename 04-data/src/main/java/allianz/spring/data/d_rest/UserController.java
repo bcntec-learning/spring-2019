@@ -23,14 +23,16 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserEntity findUserById(@PathVariable("id") UserEntity user) {
-        return user;
+    public UserEntity findUserById(@PathVariable("id") Long user) {
+        return userRepository.findById(user).get();
     }
 
+    /*
     @GetMapping
     public Page<UserEntity> findAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
+    */
 
     @GetMapping("/sorted")
     public Page<UserEntity> findAllUsersSortedByName() {
@@ -38,8 +40,10 @@ public class UserController {
         return userRepository.findAll(pageable);
     }
 
+    /*
     @GetMapping("/filtered")
     public Iterable<UserEntity> getUsersByQuerydslPredicate(Pageable pageable, @QuerydslPredicate(root = UserEntity.class) Predicate predicate) {
         return userRepository.findAll(predicate, pageable);
     }
+    */
 }

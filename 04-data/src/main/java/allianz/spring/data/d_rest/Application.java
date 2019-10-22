@@ -4,11 +4,15 @@ import allianz.spring.data.entities.UserEntity;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.stream.Stream;
-
+@EnableWebMvc
 @SpringBootApplication
+@EntityScan(basePackageClasses = UserEntity.class)
 public class Application {
 
     public static void main(String[] args) {
@@ -16,13 +20,18 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner initialize(UserRepository userRepository) {
+    CommandLineRunner initialize(UserService userService) {
         return args -> {
-            Stream.of("Juanito", "Roberta", "Ignasio", "Mario", "Honorio").forEach(name -> {
-                UserEntity user = new UserEntity(name);
-                userRepository.save(user);
-            });
-            userRepository.findAll().forEach(System.out::println);
+            try {
+                //System.out.println(userService.create("Juanito"));
+
+                userService.create("Juanito", "Roberta", "Ignasio", "Mario", "Honorio")
+                        .forEach(System.out::println);
+            }finally {
+                userService.getUserRepository().findAll().forEach(System.out::println);
+            }
         };
     }
+
+
 }

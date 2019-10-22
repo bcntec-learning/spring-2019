@@ -14,11 +14,12 @@ public class UserEntity {
     private Long id;
 
     @NotNull
+    //@Column(name = "NAME", nullable = false)
     private String name;
     @NotNull
     private String email;
 
-    @Version
+    @Version //optimistic concurrency
     private Long version;
 
     @JsonIgnore

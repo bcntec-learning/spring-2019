@@ -3,6 +3,7 @@ package allianz.spring.mvc.simple.sample1;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,8 +34,8 @@ public class Sample1Controller {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     @RequestMapping(value = "/add1", method = RequestMethod.POST)
-    public String submit(Model model) {
-        Map<String, Object> map = model.asMap();
+    public String submit(ModelMap model) {
+        Map<String, Object> map = model;
         return "user1 '" + new User(
                 (String) map.get("name"),
                 new Long((String) map.get("id")),

@@ -1,14 +1,17 @@
 package allianz.spring.mvc.configurer.basic;
 
 import allianz.spring.mvc.configurer.sample1.TrackerArgumentResolver;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.List;
 
@@ -51,6 +54,18 @@ public class BasicConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> handlers) {
+
+    }
+
+
+    @Bean
+    public ViewResolver resourceBundleViewResolver() {
+
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+
+        resolver.setViewClass(BasicView.class);
+        resolver.setOrder(1);
+        return resolver;
 
     }
 }
