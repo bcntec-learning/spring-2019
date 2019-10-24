@@ -4,7 +4,6 @@ package allianz.spring.data.b_jpa_repository;
 import allianz.spring.data.entities.UserEntity;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -15,8 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 */
 @ComponentScan(basePackageClasses = {UserEntity.class, UserRepository.class})
 @EntityScan(basePackageClasses = UserEntity.class)
-@SpringBootApplication(scanBasePackageClasses = {SpringRepositoryMain.class},
-        exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication(scanBasePackageClasses = {SpringRepositoryMain.class})
 public class SpringRepositoryMain {
 
     public static void main(String[] args) {

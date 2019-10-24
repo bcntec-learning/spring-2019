@@ -20,7 +20,7 @@ public class ControllerAdvice1ExceptionHandler extends ResponseEntityExceptionHa
         return handleExceptionInternal(ex, new MyErrorResponse("not found!!!!"), new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
-    @ExceptionHandler({Throwable.class})
+    @ExceptionHandler({Exception.class})
     public ResponseEntity<Object> handleBadRequest(Exception ex, WebRequest request) {
         return handleExceptionInternal(ex, new MyErrorResponse(ex
                 .getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);

@@ -1,5 +1,6 @@
 package allianz.spring.mvc.configurer.sample1;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -11,9 +12,13 @@ import java.util.List;
 @Configuration
 public class Configurer1Configurer implements WebMvcConfigurer {
 
+    @Autowired
+    private TrackerArgumentResolver trackerArgumentResolver;
+
     @Override
     public void addArgumentResolvers(final List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(new TrackerArgumentResolver());
+        //argumentResolvers.add(new TrackerArgumentResolver());
+        argumentResolvers.add(trackerArgumentResolver);
     }
 
     @Override

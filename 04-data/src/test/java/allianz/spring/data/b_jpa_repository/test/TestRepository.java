@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ComponentScan(basePackageClasses = {UserEntity.class, UserRepository.class})
+@ComponentScan(basePackageClasses = { UserRepository.class})
 @EntityScan(basePackageClasses = UserEntity.class)
 
 @SpringBootTest(
