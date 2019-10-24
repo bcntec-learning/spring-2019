@@ -4,7 +4,7 @@
         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
 
     <bean id="echo" class="org.springframework.web.servlet.view.JstlView">
-        <property name="url" value="/jsp/echo.jsp"/>
+        <property name="url" value="/jsp2/echo.jsp"/>
     </bean>
     <bean id="echo2" class="allianz.spring.mvc.viewresolvers.MyPDF">
     </bean>

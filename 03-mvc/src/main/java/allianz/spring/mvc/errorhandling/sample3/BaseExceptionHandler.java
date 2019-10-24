@@ -14,14 +14,14 @@ public abstract class BaseExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(Throwable.class)
+    @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ExceptionHandlers.ErrorResponse handleThrowable(final Throwable ex) {
+    public ExceptionHandlers.ErrorResponse handleThrowable(final Exception ex) {
         log.error("Unexpected error", ex);
         return new ErrorResponse("INTERNAL_SERVER_ERROR", "An unexpected internal server error occured");
     }
 
-
+//ApiModel Swagger
     public static class ErrorResponse {
         private final String code;
         private final String message;
